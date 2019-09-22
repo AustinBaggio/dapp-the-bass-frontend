@@ -38,8 +38,8 @@ const useStyles = makeStyles(theme => ({
 
 const App: React.FC = () => {
   const classes = useStyles();
-  const [name, setName] = React.useState(" ");
-  const [data, setData] = React.useState({ names: ["Hello"] });
+  const [name, setName] = React.useState("");
+  const [data, setData] = React.useState({ names: [] });
   React.useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
@@ -67,7 +67,6 @@ const App: React.FC = () => {
             autoFocus
             onChange={e => {
               setName(e.target.value);
-              console.log(data)
             }}
           />
         </form>
