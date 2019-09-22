@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import axios from "axios";
+import {getWhois} from "./api/query"
 
 function Copyright() {
   return (
@@ -39,15 +39,8 @@ const useStyles = makeStyles(theme => ({
 const App: React.FC = () => {
   const classes = useStyles();
   const [name, setName] = React.useState("");
-  const [data, setData] = React.useState({ names: [] });
   React.useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(
-        "https://hn.algolia.com/api/v1/search?query=redux"
-      );
-      setData(result.data);
-    };
-    fetchData();
+    getWhois("austin").then((info) => console.log(info))
   }, []);
 
   return (
